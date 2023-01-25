@@ -1,0 +1,12 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block title %}
+  {{ subproduct.name }}
+{% endblock %}
+{% block content %}
+  <div class="product-detail">
+    <img src="{% if subproduct.image %}{{ subproduct.image.url }}{% else %}
+    {% static "img/no_image.png" %}{% endif %}">
+    <h1>{{ subproduct.name }}</h1>
+  </div>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>{% block title %}7th String Cakes and Coffee{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arsenal:ital,wght@0,400;0,700;1,400;1,700&family=Rochester&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link href="{% static "css/base.css" %}" rel="stylesheet">
+  </head>
+  <body >
+    <div class="roof container-fluid p-3 bg-image justify-content-center" >
+    <ul class="container nav align-items-center nav-pills nav-fill">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li>
+        <li class="nav-item logo">
+        <img src="{% static '/img/7thString-04.png'%}" width="150" alt="logo">
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="#">Contact</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="#">Menu</a>
+      </li>
+
+
+    </ul>
+  </div>
+    <div id="subheader">
+      <div class="cart">
+          {% with total_items=cart|length %}
+            {% if total_items > 0 %}
+              Your cart:
+              <a href="{% url "cart:cart_detail" %}">
+                {{ total_items }} item{{ total_items|pluralize }},
+                ${{ cart.get_total_price }}
+              </a>
+            {% else %}
+              Your cart is empty.
+            {% endif %}
+          {% endwith %}
+      </div>
+    </div>
+    <div id="content">
+      {% block content %}
+      {% endblock %}
+    </div>
+  </body>
+</html>

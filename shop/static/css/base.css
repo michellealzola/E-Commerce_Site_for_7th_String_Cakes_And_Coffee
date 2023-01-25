@@ -1,0 +1,443 @@
+@import url(//fonts.googleapis.com/css?family=Arsenal);
+@import url(//fonts.googleapis.com/css?family=Rochester);
+
+div.roof
+{
+    background-image: url('../img/7thString-05.png');
+    height: 200px;
+    opacity: .8;
+}
+body {
+    margin:0;
+    padding:0;
+    font-family: 'Arsenal', sans-serif;
+}
+
+h1, h2, h3, h4, h5 , h6 {
+    font-family: 'Rochester', cursive; font-weight:normal;
+    color: rgb(121, 79, 65);
+}
+
+h1
+{
+    font-size: 300%;
+}
+
+.item a
+{
+    font-size: 150%;
+}
+
+a {
+    text-decoration:none;
+    color: rgb(227, 176, 174);
+}
+
+a:hover {
+    color:rgb(121,79,65);
+}
+
+a.button, input[type="submit"] {
+    color:rgb(246,237,215);
+    background:rgb(205,69,73);
+    border-radius:5px;
+    padding:10px 20px;
+    font-size:100%;
+    border:0;
+    width: 100%;
+    margin-top: 2%
+
+}
+
+a.button.light {
+    color:#666;
+    background:rgb(246,237,215);
+}
+
+.text-left {
+    text-align:left;
+}
+
+.text-right {
+    text-align:right;
+}
+
+table {
+    width:100%;
+    border-spacing:0;
+    border-collapse: collapse;
+
+}
+
+table th, table td {
+    text-align:left;
+    font-size:120%;
+    padding:10px;
+    margin:0;
+    border-radius: 15px 15px 0 0;
+}
+
+table td
+{
+    border-radius: 0;
+}
+
+table th
+{
+    border-bottom: 3px solid rgb(121,79,65);
+}
+
+tbody tr:nth-child(odd) {
+    background:rgb(246,237,215);
+}
+
+tbody tr:nth-child(even) {
+    background:#FFFFF0;
+}
+
+tbody tr.subtotal {
+    background:rgb(246,237,215);
+}
+
+thead th, tbody tr.total {
+    background:rgb(205, 69, 73);
+    color:rgb(246,237,215);
+    font-weight:bold;
+
+}
+
+table.cart {
+    margin-bottom:40px;
+}
+
+table.cart img {
+    width:180px;
+}
+
+tbody td.num {
+    text-align:right;
+}
+
+td input[type="submit"] {
+    font-size:12px;
+    padding:4px 10px;
+}
+
+form p label, form p input {
+    float:left;
+    clear:both;
+}
+
+form p label {
+    font-size:120%;
+    padding-bottom:4px;
+}
+
+form p input {
+    width:100%;
+    font-size:120%;
+    margin-bottom:10px;
+    padding:10px 12px;
+    border:0;
+    background:rgb(246,237,215);
+    color:#666;
+    border-radius:4px;
+
+}
+
+ul.errorlist {
+   float:left;
+   color:#ff0000;
+   clear:both;
+   font-size:13px;
+   margin:0 0 0 10px;
+   padding:10px 0;
+}
+
+
+#header {
+    padding:10px 100px;
+    font-size:18px;
+    overflow:auto;
+}
+
+#subheader {
+    /*background:rgb(227,176,174);*/
+    color:rgb(227,176,174);
+    padding:10px 100px;
+    overflow:auto;
+    font-size: x-large;
+    width: 100%;
+
+}
+
+#header .logo {
+
+    float:left;
+    color:#333;
+    font-size:22px;
+    margin-right:10%;
+}
+
+#subheader .cart {
+    float:right;
+    padding-top:4px;
+}
+
+#content {
+    padding:0 100px;
+    overflow:hidden;
+
+
+
+}
+
+#sidebar {
+    width:200px;
+    padding:10px;
+    float:left;
+    /*border-style: solid;*/
+    margin-right: 2%;
+    border-radius: 10px;
+    /*border-width: thin;*/
+    /*border-color: lightslategrey;*/
+    /*background-color: rgb(246, 237, 215);*/
+}
+
+#sidebar ul{
+    margin:0;
+    padding:0;
+    font-size: 150%;
+    font-style: italic;
+}
+
+#sidebar ul li {
+    margin:0;
+    list-style:none;
+    padding:10px 14px;
+}
+
+#sidebar ul li a {
+    display:block;
+}
+
+#sidebar ul li.selected {
+    background:rgb(205,69,73);
+    border-radius:4px;
+}
+
+#sidebar ul li.selected a {
+    color:rgb(246,237,215);
+}
+
+#main {
+    float:left;
+    width: 96%;
+    margin-right:-200px;
+    overflow:hidden;
+    margin-left: 2%;
+}
+
+.product-list .item {
+    width:40%;
+    padding:10px 20px 10px 0;
+    float:left;
+    text-align:center;
+    line-height:1.2;
+}
+
+.product-list .item img {
+    width:100%;
+    margin-bottom:8px;
+}
+
+.product-detail {
+    text-align:justify;
+
+}
+
+.product-detail .price {
+    color:#333;
+    font-size:28px;
+    font-weight:bold;
+}
+
+.product-detail img {
+    /*width:40%;*/
+    float:left;
+    /*padding:0 20px 20px 0;*/
+    background-color: #bbbbbb;
+    width: 250px;
+    height: auto;
+    float: left;
+    border-radius: 5px;
+
+}
+
+.product-detail h1 {
+    margin-bottom:0;
+    background-color: rgb(205, 69, 73);
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.product-detail h2 {
+    margin-top:10px;
+    color: rgb(121,79,65);
+    border-bottom: 1px solid rgb(121,79,65);
+}
+
+.order-form {
+    float:right;
+    width: 50%;
+
+}
+
+.order-info {
+    float:left;
+    width:48%;
+    background:rgb(246,237,215);
+    padding:10px 20px;
+    color:#333;
+    /*border-bottom:4px solid rgb(205, 69, 73);*/
+    margin-right: 2%;
+    border-radius: 15px;
+}
+
+.order-info h3 {
+    color:rgb(205, 69, 73);
+}
+
+.order-info ul li {
+    margin:0;
+    padding:0;
+    font-size:120%;
+    list-style: none;
+}
+
+.order-info p {
+    font-weight:bold;
+    float:right;
+    font-size: 120%;
+}
+
+.order-info span {
+    float:right;
+}
+
+.neg {
+    color:#dc1616;
+}
+
+.languages {
+   float:right;
+   padding-top:4px;
+   font-size:14px;
+}
+
+.languages ul {
+    list-style:none;
+    margin:0;
+    padding:0;
+    float:left;
+}
+
+.languages ul li {
+    float:left;
+    margin:0 0 0 10px;
+    font-size:14px;
+}
+
+.languages p {
+    float:left;
+    margin:0;
+}
+
+.recommendations {
+    clear:both;
+}
+
+.recommendations div {
+    float:left;
+}
+
+.recommendations img {
+    width:200px
+}
+
+.recommendations p {
+    clear:both;
+}
+
+.recommendations.cart {
+    width:60%;
+    float:left;
+    overflow:auto;
+}
+
+.recommendations.cart h3 {
+    margin-top:0;
+}
+
+.recommendations.cart .item {
+    margin-right:10px;
+}
+
+.recommendations.cart img {
+    width:120px;
+}
+
+/* braintree hosted fields */
+form div.field {
+    font-size:13px;
+    color:#666;
+    width:300px;
+    height:22px;
+    margin-bottom:10px;
+    padding:6px 12px;
+    border:0;
+    background:#efefef;
+    color:#666;
+    border-radius:4px;
+}
+
+li.nav-item a
+{
+    color: rgb(62,32,24);
+    font-size: 250%;
+    font-family: 'Rochester', cursive; font-weight:normal;
+
+}
+
+.nav a:hover
+{
+    color: rgb(205, 69, 73);
+}
+
+.product-list h1
+{
+    padding-left: 1%;
+    color: rgb(205, 69, 73);
+}
+
+.subcontainer
+{
+    width: 50%;
+    /*background-color: #bbbbbb;*/
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2%;
+    /*padding-bottom: 0;*/
+    margin-bottom: 1%;
+    float: left;
+
+}
+
+.subdetail
+{
+    float: left;
+    width: 60%;
+    margin-left: 5%;
+
+}
