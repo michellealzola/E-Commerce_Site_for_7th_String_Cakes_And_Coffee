@@ -1,0 +1,104 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block title %}
+  Your shopping cart
+{% endblock %}
+{% block content %}
+
+    <h1 style="margin-top: 1%; margin-bottom: 2%">Your shopping cart</h1>
+  <table class="cart">
+    <thead >
+      <tr>
+        <th style="font-size: large">Image</th>
+        <th style="font-size: large">Product</th>
+        <th style="font-size: large">Quantity</th>
+        <th style="font-size: large">Remove</th>
+        <th style="font-size: large">Unit price</th>
+        <th style="font-size: large">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in cart %}
+        {% with subproduct=item.subproduct %}
+          <tr>
+            <td>
+              <a href="{{ subproduct.get_absolute_url }}">
+                <img src="{% if subproduct.image %}{{ subproduct.image.url }}
+                {% else %}{% static "img/no_image.png" %}{% endif %}" style="border-radius: 5px">
+              </a>
+            </td>
+            <td>{{ subproduct.name }}</td>
+            <td>
+                <form action="{% url "cart:cart_add" subproduct.id %}" method="post">
+                    {{ item.update_quantity_form.quantity }}
+                    {{ item.update_quantity_form.override }}
+                    <input type="submit" value="Update" style="font-size: 15px; background-color:rgb(121,79,65); width: auto">
+                    {% csrf_token %}
+                </form>
+            </td>
+
+            <td>
+              <form action="{% url "cart:cart_remove" subproduct.id %}" method="post">
+                <input type="submit" value="Remove" style="font-size: 15px; background-color:rgb(121,79,65); width: auto">
+                {% csrf_token %}
+              </form>
+            </td>
+            <td class="num">${{ item.price }}</td>
+            <td class="num">${{ item.total_price }}</td>
+          </tr>
+        {% endwith %}
+      {% endfor %}
+      <tr class="total">
+        <td>Sub Total</td>
+
+        <td colspan="4"></td>
+        <td class="num">${{ cart.get_sub_total_price }}</td>
+
+      </tr>
+
+      <tr class="gst" >
+        <td>GST</td>
+
+        <td colspan="4"></td>
+        <td class="num">${{ cart.get_gst }}</td>
+      </tr>
+    {% if cart.coupon %}
+      <tr class="subtotal">
+        <td>Subtotal</td>
+        <td colspan="4"></td>
+        <td class="num">${{ cart.get_total_price|floatformat:2 }}</td>
+      </tr>
+      <tr>
+        <td>
+          "{{ cart.coupon.code }}" coupon
+          ({{ cart.coupon.discount }}% off)
+        </td>
+        <td colspan="4"></td>
+        <td class="num neg">
+          - ${{ cart.get_discount|floatformat:2 }}
+        </td>
+      </tr>
+    {% endif %}
+      <tr class="total">
+          <td>Total</td>
+          <td colspan="4"></td>
+          <td class="num">
+            ${{ cart.get_total_price_after_discount|floatformat:2 }}
+          </td>
+      </tr>
+    </tbody>
+  </table>
+    <p style="font-size: 150%; margin-bottom: 0;">Apply a Coupon Code:</p>
+        <form action="{% url "coupons:apply" %}" method="post">
+          {{ coupon_apply_form }}
+          <input type="submit" value="Apply" style="width: 10%; margin-top: 0">
+          {% csrf_token %}
+        </form>
+    <p class="text-right">
+    <a href="{% url "shop:product_list" %}" class="button
+    light" style="font-size: 20px">Continue shopping</a>
+    <a href="{% url "orders:order_create" %}" class="button" style="font-size: 20px; background-color:rgb(205, 69, 73)">Checkout</a>
+  </p>
+
+
+  {% endblock %}
