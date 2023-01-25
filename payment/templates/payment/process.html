@@ -1,0 +1,66 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block title %}Pay your order{% endblock %}
+{% block content %}
+  <h1 style="margin-top: .5%">Order summary</h1>
+  <table class="table table-light">
+    <thead>
+      <tr>
+        <th style="color: rgb(121,79,65)">Image</th>
+        <th style="color: rgb(121,79,65)">Product</th>
+        <th style="color: rgb(121,79,65)">Price</th>
+        <th style="color: rgb(121,79,65)">Quantity</th>
+        <th style="color: rgb(121,79,65)">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in order.items.all %}
+        <tr class="row{% cycle "1" "2" %}">
+          <td>
+            <img src="{% if item.subproduct.image %}{{ item.subproduct.image.url }}
+            {% else %}{% static "img/no_image.png" %}{% endif %}" style="width: 150px; height: auto">
+          </td>
+          <td>{{ item.subproduct.name }}</td>
+          <td class="num">${{ item.price }}</td>
+          <td class="num">{{ item.quantity }}</td>
+          <td class="num">${{ item.get_cost }}</td>
+        </tr>
+      {% endfor %}
+      <tr class="total" style="color: rgb(121,79,65)">
+        <td colspan="4">Sub-Total</td>
+        <td class="num">${{ order.get_total_cost }}</td>
+      </tr>
+    <tr class="num">
+        <td colspan="4">GST</td>
+        <td class="num">${{ order.get_gst }}</td>
+      </tr>
+      {% if order.coupon %}
+  <tr class="subtotal" >
+    <td>Subtotal</td>
+    <td colspan="3"></td>
+    <td class="num">
+      ${{ order.get_total_cost_before_discount }}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      "{{ order.coupon.code }}" coupon
+      ({{ order.discount }}% off)
+    </td>
+    <td colspan="3"></td>
+    <td class="num neg" style="color: rgb(121,79,65)">
+      - ${{ order.get_discount }}
+    </td>
+  </tr>
+{% endif %}
+    <tr class="total" style="color: rgb(121,79,65)">
+        <td colspan="4">Total</td>
+        <td class="num">${{ order.overall_cost }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <form action="{% url "payment:process" %}" method="post">
+    <input type="submit" value="Pay Now">
+    {% csrf_token %}
+  </form>
+{% endblock %}
