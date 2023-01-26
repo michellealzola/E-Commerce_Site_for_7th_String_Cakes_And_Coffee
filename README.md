@@ -2,7 +2,7 @@
 An e-Commerce business that allows online ordering and payment. Orders can be imported to CSV and a pdf of invoice is sent to the buyer and owner.
 
 # Technologies
-Django, Python, JavaScript, CSS, HTML, Bootstrap, Stripe Payment Gateway and Blender 3D for the cup images
+Django, Python, JavaScript, CSS, HTML, Bootstrap, Stripe Payment Gateway, WeasyPrint and Blender 3D for the cup images
 
 # ScreenShots
 [ Homepage ]
